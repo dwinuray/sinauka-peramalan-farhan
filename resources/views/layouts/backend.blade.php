@@ -118,7 +118,7 @@
                                     href="{{ route('dashboard') }}" class="menu-link "><i
                                         class="menu-icon flaticon2-architecture-and-city"></i><span
                                         class="menu-text">Dashboard</span></a></li>
-                            <li class="menu-item" aria-haspopup="true"><a href="{{ route('kategori.index') }}"
+                            <li class="menu-item"><a href="{{ route('kategori.index') }}"
                                     class="menu-link"><i class="menu-icon flaticon2-telegram-logo"></i><span
                                         class="menu-text">Kategori</span></a>
                             </li>
@@ -127,11 +127,11 @@
                                         class="menu-text">Menu</span></a>
                             </li>
                             <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover"><a
-                                    href="javascript:;" class="menu-link menu-toggle"><i
+                                    href="{{ route('bahanbaku.index') }}" class="menu-link menu-toggle"><i
                                         class="menu-icon flaticon2-browser-2"></i><span class="menu-text">Bahan
-                                        Baku</span><i class="menu-arrow"></i></a>
+                                        Baku</span></a>
                             </li>
-                            <li class="menu-item" aria-haspopup="true"><a href="javascript:;" class="menu-link "><i
+                            <li class="menu-item" aria-haspopup="true"><a href="{{ route('transaksi.index') }}" class="menu-link "><i
                                         class="menu-icon flaticon2-console"></i><span
                                         class="menu-text">Penjualan</span></a></li>
                             <li class="menu-item " aria-haspopup="true"><a href="javascript:;" class="menu-link "><i
@@ -173,12 +173,11 @@
                                                 class="menu-arrow"></i></a>
                                     </li>
                                     <li class="menu-item  menu-item-submenu menu-item-rel" data-menu-toggle="click"
-                                        aria-haspopup="true"><a href="javascript:;" class="menu-link menu-toggle"><span
-                                                class="menu-text">Bahan Baku</span><span class="menu-desc"></span><i
-                                                class="menu-arrow"></i></a>
+                                        aria-haspopup="true"><a href="{{ route('bahanbaku.index') }}" class="menu-link menu-toggle"><span
+                                                class="menu-text">Bahan Baku</span><span class="menu-desc"></span></a>
                                     </li>
                                     <li class="menu-item  menu-item-submenu" data-menu-toggle="click"
-                                        aria-haspopup="true"><a href="javascript:;" class="menu-link menu-toggle"><span
+                                        aria-haspopup="true"><a href="{{ route('transaksi.index') }}" class="menu-link menu-toggle"><span
                                                 class="menu-text">Penjualan</span><span class="menu-desc"></span><i
                                                 class="menu-arrow"></i></a>
                                     </li>

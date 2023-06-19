@@ -4,6 +4,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\BahanbakuController;
+use App\Http\Controllers\TransaksiController;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 
@@ -48,6 +50,13 @@ Route::middleware(['auth'])->group(function() {
     Route::post('menu/ingredient/{id}', [MenuController::class, 'ingredient_store'])->name('ingredient');
     Route::post('menu/ingredient/update/{id_menu}/{id}', [MenuController::class, 'ingredient_update']);
     Route::post('menu/ingredient/delete/{id_menu}/{id}', [MenuController::class, 'ingredient_delete']);
+
+
+
+    // bahan baku
+    Route::resource('bahanbaku', BahanbakuController::class);
+
+    Route::resource('transaksi', TransaksiController::class);
 
 
     // logout
