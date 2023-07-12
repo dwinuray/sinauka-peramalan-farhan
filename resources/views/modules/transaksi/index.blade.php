@@ -25,7 +25,9 @@
                 <a href="{{ route('transaksi.create') }}" class="btn btn-light-warning font-weight-bolder btn-sm">
                     Tambah Baru
                 </a>
-                <!--end::Actions-->
+
+                <a href="javascript:;" data-toggle="modal" data-target="#filter-laporan" class="btn btn-light-info font-weight-bolder btn-sm">Cetak Laporan</a>
+
             </div>
             <!--end::Info-->
 
@@ -39,6 +41,40 @@
         <!--begin::Container-->
         <div class=" container ">
             <!--begin::Dashboard-->
+
+            <!-- Modal-->
+            <div class="modal fade" id="filter-laporan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-md modal-dialog-centered" role="document">
+                        <div class="modal-content">
+
+                            <form action="{{ url('transaksi/cetak') }}" method="GET">
+                            <div class="modal-body">
+                                <h2 style="margin-bottom: 40px">Cetak Laporan Transaksi</h2>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Tanggal Awal</label>
+                                            <input type="date" name="start" class="form-control" required="">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Tanggal Akhir</label>
+                                            <input type="date" name="end" class="form-control" required="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-light-danger font-weight-bold">Cetak Laporan</button>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!--end::Actions-->
 
 
             <div class="row justify-content-center">

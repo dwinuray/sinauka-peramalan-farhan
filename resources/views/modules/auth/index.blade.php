@@ -89,7 +89,7 @@
                             </div>
                             @endif 
                         </div>
-                        <form class="form" method="POST" action="{{ route('login') }}">
+                        <form class="form" method="POST" action="{{ url('login/proses') }}">
 
                             @csrf
                             <div class="form-group mb-5">

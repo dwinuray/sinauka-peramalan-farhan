@@ -35,6 +35,17 @@
 
     <link rel="shortcut icon" href="{{ asset('assets/media/logos/favicon.ico') }}" />
 
+    <!--begin::Global Theme Bundle(used by all pages)-->
+    <script src="{{ asset('assets/plugins/global/plugins.bundle.js?v=7.2.9') }}"></script>
+    <script src="{{ asset('assets/plugins/custom/prismjs/prismjs.bundle.js?v=7.2.9') }}"></script>
+    <script src="{{ asset('assets/js/scripts.bundle.js?v=7.2.9') }}"></script>
+    <!--end::Global Theme Bundle-->
+
+    <!--begin::Page Vendors(used by this page)-->
+    <script src="{{ asset('assets/plugins/custom/fullcalendar/fullcalendar.bundle.js?v=7.2.9') }}">
+    </script>
+    <!--end::Page Vendors-->
+
     
 </head>
 <!--end::Head-->
@@ -134,7 +145,7 @@
                             <li class="menu-item" aria-haspopup="true"><a href="{{ route('transaksi.index') }}" class="menu-link "><i
                                         class="menu-icon flaticon2-console"></i><span
                                         class="menu-text">Penjualan</span></a></li>
-                            <li class="menu-item " aria-haspopup="true"><a href="javascript:;" class="menu-link "><i
+                            <li class="menu-item " aria-haspopup="true"><a href="{{ url('metode') }}" class="menu-link "><i
                                         class="menu-icon flaticon2-console"></i><span
                                         class="menu-text">Peramalan</span></a></li>
                         </ul>
@@ -162,22 +173,21 @@
                                     <li class="menu-item  menu-item-active " aria-haspopup="true"><a
                                             href="{{ route('dashboard') }}" class="menu-link "><span
                                                 class="menu-text">Dashboard</span></a></li>
-                                    <li class="menu-item  menu-item-submenu menu-item-rel" data-menu-toggle="click"
-                                        aria-haspopup="true"><a href="{{ route('kategori.index') }}" class="menu-link menu-toggle"><span
+                                    <li class="menu-item  menu-item-submenu menu-item-rel"><a href="{{ route('kategori.index') }}" class="menu-link"><span
                                                 class="menu-text">Kategori</span><span class="menu-desc"></span><i
                                                 class="menu-arrow"></i></a>
                                     </li>
                                     <li class="menu-item  menu-item-submenu menu-item-rel" data-menu-toggle="click"
-                                        aria-haspopup="true"><a href="{{ route('menu.index') }}" class="menu-link menu-toggle"><span
+                                        aria-haspopup="true"><a href="{{ route('menu.index') }}" class="menu-link"><span
                                                 class="menu-text">Menu</span><span class="menu-desc"></span><i
                                                 class="menu-arrow"></i></a>
                                     </li>
                                     <li class="menu-item  menu-item-submenu menu-item-rel" data-menu-toggle="click"
-                                        aria-haspopup="true"><a href="{{ route('bahanbaku.index') }}" class="menu-link menu-toggle"><span
+                                        aria-haspopup="true"><a href="{{ route('bahanbaku.index') }}" class="menu-link"><span
                                                 class="menu-text">Bahan Baku</span><span class="menu-desc"></span></a>
                                     </li>
                                     <li class="menu-item  menu-item-submenu" data-menu-toggle="click"
-                                        aria-haspopup="true"><a href="{{ route('transaksi.index') }}" class="menu-link menu-toggle"><span
+                                        aria-haspopup="true"><a href="{{ route('transaksi.index') }}" class="menu-link"><span
                                                 class="menu-text">Penjualan</span><span class="menu-desc"></span><i
                                                 class="menu-arrow"></i></a>
                                     </li>
@@ -228,16 +238,6 @@
                                 class="text-dark-75 text-hover-primary">Vosco</a>
                         </div>
                         <!--end::Copyright-->
-
-                        <!--begin::Nav-->
-                        <div class="nav nav-dark">
-                            <a href="http://keenthemes.com/metronic" target="_blank"
-                                class="nav-link pl-0 pr-5">About</a>
-                            <a href="http://keenthemes.com/metronic" target="_blank" class="nav-link pl-0 pr-5">Team</a>
-                            <a href="http://keenthemes.com/metronic" target="_blank"
-                                class="nav-link pl-0 pr-0">Contact</a>
-                        </div>
-                        <!--end::Nav-->
                     </div>
                     <!--end::Container-->
                 </div>
@@ -318,7 +318,7 @@
             <!--begin::Nav-->
             <div class="navi navi-spacer-x-0 p-0">
                 <!--begin::Item-->
-                <a href="/metronic/demo13/custom/apps/user/profile-1/personal-information.html" class="navi-item">
+                <a href="{{ url('profile') }}" class="navi-item">
                     <div class="navi-link">
                         <div class="symbol symbol-40 bg-light mr-3">
                             <div class="symbol-label">
@@ -417,16 +417,7 @@
 
 
 
-    <!--begin::Global Theme Bundle(used by all pages)-->
-    <script src="{{ asset('assets/plugins/global/plugins.bundle.js?v=7.2.9') }}"></script>
-    <script src="{{ asset('assets/plugins/custom/prismjs/prismjs.bundle.js?v=7.2.9') }}"></script>
-    <script src="{{ asset('assets/js/scripts.bundle.js?v=7.2.9') }}"></script>
-    <!--end::Global Theme Bundle-->
-
-    <!--begin::Page Vendors(used by this page)-->
-    <script src="{{ asset('assets/plugins/custom/fullcalendar/fullcalendar.bundle.js?v=7.2.9') }}">
-    </script>
-    <!--end::Page Vendors-->
+    
 
     <form action="{{ route('logout') }}" method="post" id="form-logout">@csrf</form>
     <script>

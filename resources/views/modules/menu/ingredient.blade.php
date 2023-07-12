@@ -77,7 +77,7 @@
                             <div class="form-group">
                                 <label for="">Jumlah</label>
                                 <input type="number" name="jumlah" class="form-control" id="">
-                                <small>Berikan deskripsi (Opsional)</small>
+                                <small>Berikan jumlah takaran</small>
                             </div>
                         </div>
                         <div class="modal-footer">

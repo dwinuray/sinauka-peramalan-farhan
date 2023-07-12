@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Menu;
 use App\Models\Transaksi;
 
-use DB, Auth;
+use DB, Auth, PDF;
 
 class TransaksiController extends Controller
 {
@@ -16,8 +16,6 @@ class TransaksiController extends Controller
     public function index()
     {
         //
-
-
         $dt_transaksi = array();
 
         $transaksi = Transaksi::all();
@@ -90,6 +88,60 @@ class TransaksiController extends Controller
         session()->flash( 'message', $message );
 
         return redirect()->route('transaksi.index');
+    }
+
+
+
+    // cetak dengan pdf 
+    public function cetak_laporan( Request $request ){
+
+        // input
+        $awal = strtotime( $request->start );
+        $akhir = strtotime( $request->end );
+
+        $dt_keseluruhan = array();
+
+
+        // transaksi 
+        $dt_transaksi = DB::table("transaksi")->select("transaksi.*", "users.name")
+                            ->join("users", "users.id", "=", "transaksi.user_id")
+                            ->get();
+
+
+        $keterangan = "";
+
+
+        foreach ( $dt_transaksi AS $isi ) {
+
+
+            $id = $isi->id;
+            $dt_detail = DB::table("transaksi_detail")->select("transaksi_detail.amount AS permintaan", "menu.*")
+                        ->join("menu", "menu.id", "=", "transaksi_detail.menu_id")
+                        ->where("transaksi_id", $id)
+                        ->get();   
+
+            $isi->detail = $dt_detail;
+
+
+            $tanggal = strtotime( $isi->tanggal );
+
+
+            if ( $awal == $akhir && $awal == $tanggal ) {
+
+                array_push( $dt_keseluruhan, $isi );
+                $keterangan = "Rekapitulasi berdasarkan tanggal ". date('d M Y', $awal);
+
+            } else if ( $awal <= $tanggal && $tanggal <= $akhir ) {
+
+                array_push( $dt_keseluruhan, $isi );
+                $keterangan = "Rekapitulasi berdasarkan tanggal ". date('d M Y', $awal).' sampai '. date('d M Y', $akhir);
+            }
+        }
+
+        
+
+        $pdf = PDF::loadview('modules.transaksi.cetak', compact('dt_keseluruhan', 'keterangan'))->setPaper('a4', 'landscape');
+        return $pdf->download('laporan-transaksi.pdf');
     }
 
     /**

@@ -6,6 +6,8 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\BahanbakuController;
 use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\MetodeController;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 
@@ -21,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('login');
 });
 
 Route::middleware([
@@ -37,7 +39,7 @@ Route::middleware([
 
 // view login 
 Route::get('/login', [AuthController::class, 'index'])->name('login');
-Route::post('/login/proses', [AuthController::class, 'proses'])->name('login');
+Route::post('/login/proses', [AuthController::class, 'proses']);
 
 Route::middleware(['auth'])->group(function() {
 
@@ -56,7 +58,25 @@ Route::middleware(['auth'])->group(function() {
     // bahan baku
     Route::resource('bahanbaku', BahanbakuController::class);
 
+
+    Route::get('/transaksi/cetak', [TransaksiController::class, 'cetak_laporan']);
     Route::resource('transaksi', TransaksiController::class);
+
+
+    Route::get('profile/info', [ProfileController::class, 'view_update_info']);
+    Route::get('profile/password', [ProfileController::class, 'view_update_pw']);
+    Route::post('profile/update-info', [ProfileController::class, 'update_info']);
+    Route::post('profile/update-password', [ProfileController::class, 'update_password']);
+
+
+    Route::resource('profile', ProfileController::class);
+
+    // metode 
+    Route::post("metode/ses/proses", [MetodeController::class, 'proses']);
+    Route::get("metode/ses/detail/{id}", [MetodeController::class, 'detail']);
+    Route::get("metode/ses/create", [MetodeController::class, 'view_tambah']);
+    Route::get("metode/ses/delete/{id}", [MetodeController::class, 'delete']);
+    Route::get("metode", [MetodeController::class, 'index']);
 
 
     // logout
