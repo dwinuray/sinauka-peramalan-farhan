@@ -8,6 +8,7 @@ use App\Http\Controllers\BahanbakuController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MetodeController;
+use App\Http\Controllers\PegawaiController;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 
@@ -57,6 +58,7 @@ Route::middleware(['auth'])->group(function() {
 
     // bahan baku
     Route::resource('bahanbaku', BahanbakuController::class);
+    Route::resource('pegawai', PegawaiController::class);
 
 
     Route::get('/transaksi/cetak', [TransaksiController::class, 'cetak_laporan']);
